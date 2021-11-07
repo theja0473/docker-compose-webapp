@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  redis:
+    image: docker.io/bitnami/redis:6.2
+    container_name: redis
+    environment:
+      - REDIS_PASSWORD=password123
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis_data:/bitnami/redis/data'
+    expose:
+      - '6379'
+
+volumes:
+  redis_data:
+    driver: local

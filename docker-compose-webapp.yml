@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  webapp:
+    container_name: webapp
+    tty: true
+    stdin_open: true
+    image: mywebapp:1.0
+    command:
+      - bash
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - 'app_data:/app'
+
+volumes:
+  app_data:
+    driver: local
+

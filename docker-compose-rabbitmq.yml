@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  rabbitmq:
+    image: docker.io/bitnami/rabbitmq:3.9
+    container_name: rabbitmq
+    ports:
+      - '4370:4369'
+      - '5551:5551'
+      - '5552:5552'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
+    environment:
+      - RABBITMQ_USERNAME=root
+      - RABBITMQ_PASSWORD=password123
+      - RABBITMQ_NODE_NAME=rabbit01
+      - RABBITMQ_USE_LONGNAME=true
+      - RABBITMQ_SECURE_PASSWORD=yes
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=password123
+    volumes:
+      - 'rabbitmq_data:/bitnami'
+volumes:
+  rabbitmq_data:
+    driver: local

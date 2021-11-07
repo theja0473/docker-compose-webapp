@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  mariadb:
+    container_name: mariadb
+    environment:
+      MARIADB_USER: root
+      MARIADB_PASSWORD: password123
+      MARIADB_ROOT_PASSWORD: password123
+      MARIADB_DATABASE: 'db'
+    image: mariadb:latest
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - 'mysql_data:/var/lib/mysql'
+
+volumes:
+  mysql_data:
+    driver: local
